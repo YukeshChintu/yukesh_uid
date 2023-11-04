@@ -1,13 +1,12 @@
-(function () {
-    [...document.querySelectorAll(".control")].forEach(button => {
-        button.addEventListener("click", function() {
-            document.querySelector(".active-btn").classList.remove("active-btn");
-            this.classList.add("active-btn");
-            document.querySelector(".active").classList.remove("active");
-            document.getElementById(button.dataset.id).classList.add("active");
-        })
+$(document).ready(function() {
+    $(".control").on("click", function() {
+        $(".active-btn").removeClass("active-btn");
+        $(this).addClass("active-btn");
+        $(".active").removeClass("active");
+        $("#" + $(this).data("id")).addClass("active");
     });
-    document.querySelector(".theme-btn").addEventListener("click", () => {
-        document.body.classList.toggle("light-mode");
-    })
-})();
+
+    $(".theme-btn").on("click", function() {
+        $("body").toggleClass("light-mode");
+    });
+});
